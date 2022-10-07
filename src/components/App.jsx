@@ -1,15 +1,19 @@
+import { Routes, Route } from "react-router-dom";
+import { Home, HeroDetails, NotFound } from "../pages";
+
 import "./App.css";
-import { Container, Header, HeroForm, HeroList, HeroInfo } from "/";
+import { SharedLayout } from "/";
 
 function App() {
   return (
     <div className="App">
-      <Container>
-        <Header />
-        <HeroForm />
-        <HeroList />
-        <HeroInfo />
-      </Container>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path=":id" element={<HeroDetails />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
