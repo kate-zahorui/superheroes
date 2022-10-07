@@ -1,13 +1,15 @@
 import "./App.css";
-import { Header, HeroForm, HeroList, HeroInfo } from "/";
+import { Container, Header, HeroForm, HeroList, HeroInfo } from "/";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <HeroForm />
-      <HeroList />
-      <HeroInfo />
+      <Container>
+        <Header />
+        <HeroForm />
+        <HeroList />
+        <HeroInfo />
+      </Container>
     </div>
   );
 }

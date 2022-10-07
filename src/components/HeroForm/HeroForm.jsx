@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 
-// import s from "./HeroForm.module.css";
+import s from "./HeroForm.module.css";
 
 const HeroForm = () => {
   const nicknameInputId = nanoid();
@@ -11,10 +11,12 @@ const HeroForm = () => {
 
   return (
     <div>
-      <form action="">
-        <label htmlFor={nicknameInputId}>Name</label>
+      <form action="" className={s.form}>
+        <label htmlFor={nicknameInputId} className={s.label}>
+          Name
+        </label>
         <input
-          //   className={s.input}
+          className={s.input}
           id={nicknameInputId}
           type="text"
           name="nickname"
@@ -25,9 +27,11 @@ const HeroForm = () => {
           //   onChange={handleInputChange}
         />
 
-        <label htmlFor={realNameInputId}>Real name</label>
+        <label htmlFor={realNameInputId} className={s.label}>
+          Real name
+        </label>
         <input
-          //   className={s.input}
+          className={s.input}
           id={realNameInputId}
           type="text"
           name="realName"
@@ -35,33 +39,39 @@ const HeroForm = () => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <label htmlFor={descriptionInputId}>Origin description</label>
+        <label htmlFor={descriptionInputId} className={s.label}>
+          Origin description
+        </label>
         <textarea
-          //   className={s.input}
+          className={s.textarea}
           id={descriptionInputId}
           rows="3"
           name="description"
           required
         />
-        <label htmlFor={superpowersInputId}>Superpowers</label>
+        <label htmlFor={superpowersInputId} className={s.label}>
+          Superpowers
+        </label>
         <textarea
-          //   className={s.input}
+          className={s.textarea}
           id={superpowersInputId}
           rows="3"
-          //   type="text"
           name="superpowers"
           required
         />
-        <label htmlFor={phraseInputId}>Catch phrase</label>
+        <label htmlFor={phraseInputId} className={s.label}>
+          Catch phrase
+        </label>
         <textarea
-          //   className={s.input}
+          className={s.textarea}
           id={phraseInputId}
           rows="3"
-          //   type="text"
           name="phrase"
           required
         />
-        <button type="submit">Add Superhero</button>
+        <button type="submit" className={s.button}>
+          Add Superhero
+        </button>
       </form>
     </div>
   );
