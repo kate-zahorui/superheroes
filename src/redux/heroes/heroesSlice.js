@@ -11,6 +11,7 @@ import {
 const initialState = {
   items: [],
   hero: null,
+  isEditModeOn: false,
   isLoading: false,
   error: '',
 };
@@ -18,6 +19,14 @@ const initialState = {
 export const heroesSlice = createSlice({
   name: 'heroes',
   initialState,
+  reducers: {
+    setHero: (state, action) => {
+      state.hero = action.payload;
+    },
+    setIsEditModeOn: (state, action) => {
+      state.isEditModeOn = action.payload;
+    },
+  },
   extraReducers: {
     // ------------ getHeroes ------------
 
@@ -59,6 +68,7 @@ export const heroesSlice = createSlice({
     [addNewHero.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.items = [...state.items, action.payload];
+      state.hero = null;
     },
     [addNewHero.rejected]: (state, action) => {
       state.isLoading = false;
@@ -86,8 +96,12 @@ export const heroesSlice = createSlice({
     },
     [updateHero.fulfilled]: (state, action) => {
       state.isLoading = false;
-      const index = state.items.findIndex(id => id === action.payload.id);
-      state.items = state.items.splice(index, 1, action.payload);
+      const index = state.items.findIndex(
+        item => item.id === action.payload.id
+      );
+      state.items.splice(index, 1, action.payload);
+      state.hero = null;
+      state.isEditModeOn = false;
     },
     [updateHero.rejected]: (state, action) => {
       state.isLoading = false;
@@ -95,5 +109,7 @@ export const heroesSlice = createSlice({
     },
   },
 });
+
+export const { setHero, setIsEditModeOn } = heroesSlice.actions;
 
 export default heroesSlice.reducer;

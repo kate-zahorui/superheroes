@@ -12,8 +12,6 @@ const HeroList = () => {
   const handleItemClick = e => {
     e.preventDefault();
 
-    console.log(e.currentTarget);
-    console.log(e.target.nodeName);
     if (
       e.target.nodeName !== 'BUTTON' &&
       e.target.nodeName !== 'svg' &&

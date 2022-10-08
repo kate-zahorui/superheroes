@@ -1,21 +1,31 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { getHeroById } from '../../redux/heroes/heroesOperations';
-import { Container } from '../';
+import { Button, Container } from '../';
 
+import { setIsEditModeOn } from '../../redux/heroes/heroesSlice';
 // import s from "./HeroInfo.module.css";
 
 const HeroInfo = () => {
   const { hero, isLoading, error } = useSelector(state => state.heroes);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!id) return;
     dispatch(getHeroById(id));
   }, [id, dispatch]);
+
+  const handleEditBtnClick = e => {
+    e.preventDefault();
+
+    dispatch(setIsEditModeOn(true));
+    navigate(`/`);
+  };
 
   const showHero = hero && !error && !isLoading;
 
@@ -48,6 +58,7 @@ const HeroInfo = () => {
           <div>
             <h3>Images</h3>
           </div>
+          <Button btnType="button" text="Edit" onCLick={handleEditBtnClick} />
         </div>
       )}
     </Container>

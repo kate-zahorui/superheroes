@@ -1,10 +1,13 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
-import { Button, Container } from '../';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
+import { Button, Container } from '../';
 import s from './HeroForm.module.css';
 
-const HeroForm = ({ addHero }) => {
+const HeroForm = ({ handleFormSubmit }) => {
+  const { hero, isEditModeOn } = useSelector(state => state.heroes);
+
   const [nickname, setNickname] = useState('');
   const [realName, setRealName] = useState('');
   const [description, setDescription] = useState('');
@@ -16,6 +19,15 @@ const HeroForm = ({ addHero }) => {
   const descriptionInputId = nanoid();
   const superpowersInputId = nanoid();
   const phraseInputId = nanoid();
+
+  useEffect(() => {
+    if (!isEditModeOn) return;
+    setNickname(hero.nickname);
+    setRealName(hero.realName);
+    setDescription(hero.originDescription);
+    setSuperpowers(hero.superpowers);
+    setPhrase(hero.catchPhrase);
+  }, [isEditModeOn, hero]);
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -44,7 +56,8 @@ const HeroForm = ({ addHero }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    addHero(nickname, realName, description, superpowers, phrase);
+    const formData = { nickname, realName, description, superpowers, phrase };
+    handleFormSubmit(formData);
 
     setNickname('');
     setRealName('');
@@ -122,7 +135,8 @@ const HeroForm = ({ addHero }) => {
             value={phrase}
             onChange={handleInputChange}
           />
-          <Button btnType="submit" text="Add Superhero" />
+          {isEditModeOn && <Button btnType="submit" text="Save changes" />}
+          {!isEditModeOn && <Button btnType="submit" text="Add Superhero" />}
         </form>
       </div>
     </Container>

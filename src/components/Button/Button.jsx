@@ -1,6 +1,6 @@
 import s from './Button.module.css';
 
-const Button = ({ btnType, text, onBtnClick }) => {
+const Button = ({ btnType, text, onCLick }) => {
   const submitBtn = btnType === 'submit';
   const ordinaryBtn = btnType === 'button';
 
@@ -12,7 +12,7 @@ const Button = ({ btnType, text, onBtnClick }) => {
         </button>
       )}
       {ordinaryBtn && (
-        <button type={btnType} className={s.button} onClick={onBtnClick}>
+        <button type={btnType} className={s.button} onClick={onCLick}>
           {text}
         </button>
       )}

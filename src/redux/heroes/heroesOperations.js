@@ -51,10 +51,10 @@ export const deleteHero = createAsyncThunk(
 
 export const updateHero = createAsyncThunk(
   'heroes/updateHero',
-  async ({ heroId, hero }, { rejectWithValue }) => {
+  async ({ heroId, newHero }, { rejectWithValue }) => {
     try {
-      await UserAPI.updateHero(heroId, hero);
-      return heroId;
+      const hero = await UserAPI.updateHero(heroId, newHero);
+      return hero;
     } catch (error) {
       return rejectWithValue(error);
     }

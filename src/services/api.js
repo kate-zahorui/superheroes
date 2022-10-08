@@ -17,7 +17,7 @@ export const UserAPI = {
 
   addNewHero: async heroToAdd => {
     const response = await axios.post(`/`, heroToAdd);
-    console.log(response);
+
     return response.data;
   },
 
@@ -26,6 +26,8 @@ export const UserAPI = {
   },
 
   updateHero: async (id, heroToUpdate) => {
-    await axios.put(`/${id}`, heroToUpdate);
+    const response = await axios.put(`/${id}`, heroToUpdate);
+
+    return response.data;
   },
 };
