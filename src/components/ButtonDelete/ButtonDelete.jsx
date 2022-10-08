@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteHero } from '../../redux/heroes/heroesOperations';
 
@@ -19,6 +20,10 @@ const ButtonDelete = ({ heroId }) => {
       </svg>
     </button>
   );
+};
+
+ButtonDelete.propTypes = {
+  heroId: PropTypes.string.isRequired,
 };
 
 export default ButtonDelete;
