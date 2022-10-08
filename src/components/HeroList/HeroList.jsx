@@ -1,8 +1,15 @@
-import { Container } from "../";
+// import { useSelector, useDispatch } from 'react-redux';
 
-import s from "./HeroList.module.css";
+// import { deleteHero } from '../../redux/heroes/heroesOperations';
+
+import { Container } from '../';
+
+import s from './HeroList.module.css';
 
 const HeroList = () => {
+  // const { items } = useSelector(state => state.heroes);
+  // const dispatch = useDispatch();
+
   return (
     <Container>
       <div>

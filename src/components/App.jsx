@@ -1,8 +1,8 @@
-import { Routes, Route } from "react-router-dom";
-import { Home, HeroDetails, NotFound } from "../pages";
+import { Routes, Route } from 'react-router-dom';
+import { Home, HeroDetails, NotFound } from '../pages';
 
-import "./App.css";
-import { SharedLayout } from "/";
+import './App.css';
+import { SharedLayout } from '/';
 
 function App() {
   return (

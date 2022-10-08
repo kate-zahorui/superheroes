@@ -1,15 +1,15 @@
-import { nanoid } from "nanoid";
-import { useState } from "react";
-import { Container } from "../";
+import { nanoid } from 'nanoid';
+import { useState } from 'react';
+import { Container } from '../';
 
-import s from "./HeroForm.module.css";
+import s from './HeroForm.module.css';
 
 const HeroForm = ({ addHero }) => {
-  const [nickname, setNickname] = useState("");
-  const [realName, setRealName] = useState("");
-  const [description, setDescription] = useState("");
-  const [superpowers, setSuperpowers] = useState("");
-  const [phrase, setPhrase] = useState("");
+  const [nickname, setNickname] = useState('');
+  const [realName, setRealName] = useState('');
+  const [description, setDescription] = useState('');
+  const [superpowers, setSuperpowers] = useState('');
+  const [phrase, setPhrase] = useState('');
 
   const nicknameInputId = nanoid();
   const realNameInputId = nanoid();
@@ -17,23 +17,23 @@ const HeroForm = ({ addHero }) => {
   const superpowersInputId = nanoid();
   const phraseInputId = nanoid();
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
 
     switch (name) {
-      case "nickname":
+      case 'nickname':
         setNickname(value);
         break;
-      case "realName":
+      case 'realName':
         setRealName(value);
         break;
-      case "description":
+      case 'description':
         setDescription(value);
         break;
-      case "superpowers":
+      case 'superpowers':
         setSuperpowers(value);
         break;
-      case "phrase":
+      case 'phrase':
         setPhrase(value);
         break;
       default:
@@ -41,16 +41,16 @@ const HeroForm = ({ addHero }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     addHero(nickname, realName, description, superpowers, phrase);
 
-    setNickname("");
-    setRealName("");
-    setDescription("");
-    setSuperpowers("");
-    setPhrase("");
+    setNickname('');
+    setRealName('');
+    setDescription('');
+    setSuperpowers('');
+    setPhrase('');
   };
 
   return (
