@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { Container } from '../';
+import { Button, Container } from '../';
 
 import s from './HeroForm.module.css';
 
@@ -122,9 +122,7 @@ const HeroForm = ({ addHero }) => {
             value={phrase}
             onChange={handleInputChange}
           />
-          <button type="submit" className={s.button}>
-            Add Superhero
-          </button>
+          <Button btnType="submit" text="Add Superhero" />
         </form>
       </div>
     </Container>
