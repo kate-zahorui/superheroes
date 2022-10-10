@@ -2,7 +2,11 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 5px;
+  padding: 10px;
   border: none;
   background-color: transparent;
+}
+
+.button__icon {
+  fill: var(--text-color);
 }

@@ -1,6 +1,5 @@
 .backBtn {
-}
-.backBtn__icon {
-}
-.backBtn__text {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }

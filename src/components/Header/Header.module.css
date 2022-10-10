@@ -1,0 +1,7 @@
+.header {
+  padding: 20px 0px;
+  background-color: var(--accent-color);
+}
+.title {
+  color: var(--background-color);
+}

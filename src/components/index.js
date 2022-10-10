@@ -1,4 +1,4 @@
-export { default as Button } from './Button/Button';
+export { default as Btn } from './Btn/Btn';
 export { default as ButtonDelete } from './ButtonDelete/ButtonDelete';
 export { default as Container } from './Container/Container';
 export { default as Header } from './Header/Header';

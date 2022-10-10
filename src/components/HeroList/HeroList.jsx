@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Card from '@mui/material/Card';
 
+import { getCloudImage } from '../../services/cloudinary';
 import { ButtonDelete, Container } from '../';
 
 import s from './HeroList.module.css';
@@ -23,22 +25,28 @@ const HeroList = () => {
 
   return (
     <Container>
-      <div>
+      <div className={s.section}>
         <h2 className={s.title}>Superheroes</h2>
         <ul className={s.list}>
           {items.length > 0 &&
             items.map(item => (
               <li
-                key={item.id}
-                id={item.id}
+                key={item._id}
+                id={item._id}
                 className={s.item}
                 onClick={handleItemClick}
               >
-                <div className={s.heroCard}>
-                  <img src="" alt="" className={s.image} />
-                  <h3 className={s.name}>{item.nickname}</h3>
-                  <ButtonDelete heroId={item.id} />
-                </div>
+                <Card>
+                  <div className={s.heroCard}>
+                    <img
+                      src={getCloudImage(item.images[0])}
+                      alt=""
+                      className={s.image}
+                    />
+                    <h3 className={s.name}>{item.nickname}</h3>
+                    <ButtonDelete heroId={item._id} />
+                  </div>
+                </Card>
               </li>
             ))}
         </ul>

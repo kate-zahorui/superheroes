@@ -6,17 +6,30 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import 'modern-normalize/modern-normalize.css';
 import './index.css';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ffcd38',
+    },
+    secondary: {
+      main: '#4a4a4a',
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <BrowserRouter> */}
       <BrowserRouter basename="/superheroes">
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3000/api/heroes';
+axios.defaults.baseURL =
+  'https://superheroes-backend-server.herokuapp.com/api/superheroes';
+axios.defaults.headers = { 'Access-Control-Allow-Origin': '*' };
 
 export const UserAPI = {
   fetchHeroes: async () => {
@@ -16,8 +18,9 @@ export const UserAPI = {
   },
 
   addNewHero: async heroToAdd => {
-    const response = await axios.post(`/`, heroToAdd);
-
+    const response = await axios.post(`/`, heroToAdd, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
     return response.data;
   },
 
@@ -26,7 +29,9 @@ export const UserAPI = {
   },
 
   updateHero: async (id, heroToUpdate) => {
-    const response = await axios.put(`/${id}`, heroToUpdate);
+    const response = await axios.put(`/${id}`, heroToUpdate, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
 
     return response.data;
   },

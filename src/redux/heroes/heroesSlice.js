@@ -82,7 +82,7 @@ export const heroesSlice = createSlice({
     },
     [deleteHero.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.items = state.items.filter(item => item.id !== action.payload);
+      state.items = state.items.filter(item => item._id !== action.payload);
     },
     [deleteHero.rejected]: (state, action) => {
       state.isLoading = false;
@@ -97,7 +97,7 @@ export const heroesSlice = createSlice({
     [updateHero.fulfilled]: (state, action) => {
       state.isLoading = false;
       const index = state.items.findIndex(
-        item => item.id === action.payload.id
+        item => item._id === action.payload._id
       );
       state.items.splice(index, 1, action.payload);
       state.hero = null;

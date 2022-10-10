@@ -1,10 +1,10 @@
-// import s from "./Header.module.css";
+import s from './Header.module.css';
 
 const Header = () => {
   return (
-    <header>
+    <header className={s.header}>
       <div>
-        <h1>Superheroes</h1>
+        <h1 className={s.title}>Superheroes</h1>
       </div>
     </header>
   );

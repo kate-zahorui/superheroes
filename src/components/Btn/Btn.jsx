@@ -1,31 +1,30 @@
 import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
 
-import s from './Button.module.css';
-
-const Button = ({ btnType, text, onCLick }) => {
+const Btn = ({ btnType, text, onCLick }) => {
   const submitBtn = btnType === 'submit';
   const ordinaryBtn = btnType === 'button';
 
   return (
     <>
       {submitBtn && (
-        <button type={btnType} className={s.button}>
+        <Button type={btnType} variant="contained">
           {text}
-        </button>
+        </Button>
       )}
       {ordinaryBtn && (
-        <button type={btnType} className={s.button} onClick={onCLick}>
+        <Button type={btnType} variant="contained" onClick={onCLick}>
           {text}
-        </button>
+        </Button>
       )}
     </>
   );
 };
 
-Button.propTypes = {
+Btn.propTypes = {
   btnType: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   onCLick: PropTypes.func,
 };
 
-export default Button;
+export default Btn;
